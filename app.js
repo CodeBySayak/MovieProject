@@ -18,8 +18,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname,'public')))
 
-// mongoose.connect('app.use(express.urlencoded({extended:true}));')
-mongoose.connect('mongodb://127.0.0.1:27017/Movies')
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     console.log('DB connected');
 })
@@ -189,6 +188,8 @@ Output ONLY in JSON format like this:
 }`
 }
 
-app.listen(3000,()=>{
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT,()=>{
     console.log('server has started')
 })
