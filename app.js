@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     console.log('DB connected');
 })
-//seed();
+seed();
 app.get('/',async(req,res)=>{
 
     const {q}=req.query;
